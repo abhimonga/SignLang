@@ -3,6 +3,7 @@ package com.example.finalproject;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
@@ -71,6 +72,7 @@ public class search extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -89,6 +91,7 @@ public class search extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+
         SharedPreferences sharedPreferences= Objects.requireNonNull(this.getContext()).getSharedPreferences("ImageData",MODE_PRIVATE);
 
         EditText searchBar = (EditText) view.findViewById(R.id.search_bar);
@@ -98,7 +101,8 @@ public class search extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Infooo", searchBar.getText().toString());
+                MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.submit);
+                mp.start();
               String url=sharedPreferences.getString( searchBar.getText().toString(),"https://res.cloudinary.com/shradhadua/image/upload/v1609937559/Sign%20language/giphy_xkyfqq.gif");
               ProgressBar bar=new ProgressBar(getActivity());
               bar.setVisibility(View.VISIBLE);
@@ -118,6 +122,20 @@ public class search extends Fragment {
                             }
                         })
                         .into(imageView);
+            }
+        });
+        searchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.searchbar);
+                mp.start();
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.placeholder);
+                mp.start();
             }
         });
         return view;
