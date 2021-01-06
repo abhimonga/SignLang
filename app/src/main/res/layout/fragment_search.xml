@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B9D6ED"
     tools:context=".search"
     >
 
@@ -10,22 +11,25 @@
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textAutoComplete"
-        android:hint="Enter keywords to search" />
+        android:hint="Enter keywords to search"
+        android:layout_marginTop="70sp"
+        android:inputType="textAutoComplete" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="110dp"
         android:text="@string/submit" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/placeholder"
         android:contentDescription="@string/placeholder"/>
 
 </FrameLayout>
