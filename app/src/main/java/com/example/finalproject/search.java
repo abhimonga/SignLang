@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -103,7 +104,12 @@ public class search extends Fragment {
             public void onClick(View view) {
                 MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.submit);
                 mp.start();
-              String url=sharedPreferences.getString( searchBar.getText().toString(),"https://res.cloudinary.com/shradhadua/image/upload/v1609937559/Sign%20language/giphy_xkyfqq.gif");
+              String url=sharedPreferences.getString( searchBar.getText().toString(),"Error");
+              if(url.equals("Error")){
+                  Intent intent=new Intent(getContext(),split.class);
+                  intent.putExtra("text",searchBar.getText().toString());
+                  startActivity(intent);
+              }
               ProgressBar bar=new ProgressBar(getActivity());
               bar.setVisibility(View.VISIBLE);
 
